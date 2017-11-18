@@ -1,0 +1,11 @@
+{
+  "name": "Mozli",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "imagemin": "^5.3.1",
+    "imagemin-guetzli": "^1.0.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-zopfli": "^5.1.0"
+  }
+}

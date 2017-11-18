@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mozli</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/style/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 5rem;
+        }
+        #drop-zone [type="file"] {
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="container-fluid">
+        <div id="drop-zone" class="card">
+            <div class="card-body">
+                <div class="leave">Drag files on here</div>
+                <div class="enter" style="display: none;">Drop and Optimize</div>
+                <div class="progress" style="display: none;">
+                    <div id="memory-usage" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <input type="file" />
+        </div>
+        </div>
+    </body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="./assets/script/jquery-3.2.1.slim.min.js"></script>
+    <script src="./assets/script/popper.min.js"></script>
+    <script src="./assets/script/bootstrap.min.js"></script>
+    <script src="./assets/script/sweetalert.min.js"></script>
+    <script>if (window.module) module = window.module;</script>
+    <script src="./renderer.js"></script>
+    <script>
+        let dragenter = function() {
+            $(this).find('.leave').hide()
+            $(this).find('.enter').show()
+        }
+        let dragleave = function() {
+            $(this).find('.enter').hide()
+            $(this).find('.leave').show()
+        }
+        $('#drop-zone').on({
+	        dragenter : dragenter,
+            dragleave : dragleave,
+            dragend: dragleave
+        })
+        $('#drop-zone > input').on('change', function(event) {
+            dragleave()
+            var images = []
+            for (let file of this.files) {
+                images.push(file.path)
+            }
+            optimizeImage({
+                images: images
+            })
+        })
+    </script>
+</html>

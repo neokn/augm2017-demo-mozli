@@ -1,0 +1,15 @@
+{
+  "name": "augm2017-demo-mozli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "cd app && npm install",
+    "dist": "electron-builder --x64 --config"
+  },
+  "devDependencies": {
+    "electron": "1.4",
+    "electron-builder": "^19.45.5"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "appId": "kn.neo.mozli",
+    "win": {
+        "target": "portable"
+    },
+    "mac": {
+        "target": "dmg"
+    },
+    "npmRebuild": true,
+    "compression": "maximum"
+}
